@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D2D9308C23457D12006C0C42 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D2D9308B23457D12006C0C42 /* main.c */; };
+		D2D9309423457F30006C0C42 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = D2D9309223457F30006C0C42 /* LinkedList.c */; };
+		D2D930972345802C006C0C42 /* Tree.c in Sources */ = {isa = PBXBuildFile; fileRef = D2D930962345802C006C0C42 /* Tree.c */; };
+		D2D9309A234598AD006C0C42 /* RecursiveDescent.c in Sources */ = {isa = PBXBuildFile; fileRef = D2D93099234598AD006C0C42 /* RecursiveDescent.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,12 @@
 /* Begin PBXFileReference section */
 		D2D9308823457D12006C0C42 /* Project 2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Project 2"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2D9308B23457D12006C0C42 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		D2D9309223457F30006C0C42 /* LinkedList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LinkedList.c; sourceTree = "<group>"; };
+		D2D9309323457F30006C0C42 /* LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
+		D2D930952345802C006C0C42 /* Tree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
+		D2D930962345802C006C0C42 /* Tree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Tree.c; sourceTree = "<group>"; };
+		D2D93098234598AD006C0C42 /* RecursiveDescent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecursiveDescent.h; sourceTree = "<group>"; };
+		D2D93099234598AD006C0C42 /* RecursiveDescent.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = RecursiveDescent.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,12 @@
 			isa = PBXGroup;
 			children = (
 				D2D9308B23457D12006C0C42 /* main.c */,
+				D2D930952345802C006C0C42 /* Tree.h */,
+				D2D930962345802C006C0C42 /* Tree.c */,
+				D2D9309223457F30006C0C42 /* LinkedList.c */,
+				D2D9309323457F30006C0C42 /* LinkedList.h */,
+				D2D93098234598AD006C0C42 /* RecursiveDescent.h */,
+				D2D93099234598AD006C0C42 /* RecursiveDescent.c */,
 			);
 			path = "Project 2";
 			sourceTree = "<group>";
@@ -118,6 +133,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2D9309423457F30006C0C42 /* LinkedList.c in Sources */,
+				D2D9309A234598AD006C0C42 /* RecursiveDescent.c in Sources */,
+				D2D930972345802C006C0C42 /* Tree.c in Sources */,
 				D2D9308C23457D12006C0C42 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,7 +180,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -221,7 +239,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
