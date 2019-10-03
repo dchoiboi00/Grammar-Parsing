@@ -32,4 +32,6 @@ extern Tree parseA(void);
 
 extern Tree parseX(void);
 
+extern void recursive_desc_parser(char *input);
+
 #endif /* RecursiveDescent_h */

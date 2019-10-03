@@ -35,4 +35,6 @@ extern void free_Tree(Tree tree);  //free tree
 extern void Tree_add_child(Tree tree, Tree child);  //add child to tree's children
 
 extern void print_Tree(Tree tree);    //print the tree with correct indentation
+
+extern void recursive_print_Tree(Tree tree, int indent);  //recursive print-function
 #endif /* Tree_h */

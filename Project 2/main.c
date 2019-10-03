@@ -12,5 +12,5 @@
 #include "RecursiveDescent.h"
 
 int main(int argc, const char * argv[]) {
-    
+    recursive_desc_parser("(b.a|c)");
 }

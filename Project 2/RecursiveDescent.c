@@ -113,7 +113,7 @@ Tree parseCT() {
  * Production: <S> -> <A><ST>
  */
 Tree parseS() {
-    Tree A = parseA()();
+    Tree A = parseA();
     if (A == NULL){
         return NULL;
     }
@@ -187,7 +187,11 @@ Tree parseX() {
             if (!matchTerminal(alphabet[i])){  //if we find it in lookahead, match and consume it
                 return NULL;
             }
-            return new_Tree_one_child("<X>", new_Tree(&alphabet[i]));
+            char str[2];
+            str[0] = alphabet[i];
+            str[1] = '\0';
+            printf("Our <X> has child: %s\n", str);
+            return new_Tree_one_child("<X>", new_Tree(str));
         }
     }
     
