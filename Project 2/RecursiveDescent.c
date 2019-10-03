@@ -148,6 +148,54 @@ Tree parseST() {
 }
 
 /**
+ * Production: <A> -> (<E>)  |   <X>
+ */
+Tree parseA() {
+    if (lookahead('(')){
+        if (!matchTerminal('(')){
+            return NULL;
+        }
+        Tree E = parseE();
+        if (E == NULL){
+            return NULL;
+        }
+        if (!matchTerminal(')')){
+            return NULL;
+        }
+        
+        //return resulting tree
+        return new_Tree_three_children("<A>", new_Tree("("), E, new_Tree(")"));
+    } else {  //if the lookahead is NOT (
+        Tree X = parseX();
+        if (X == NULL){
+            return NULL;
+        }
+        
+        //return resulting tree
+        return new_Tree_one_child("<A>", X);
+    }
+}
+
+/**
+ * Production: <X> -> a | b | ... | z
+ */
+Tree parseX() {
+    char alphabet[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '\0'};
+    
+    for (int i = 0; i < 26; i++){  //for each letter in the lowercase alphabet
+        if (lookahead(alphabet[i])){
+            if (!matchTerminal(alphabet[i])){  //if we find it in lookahead, match and consume it
+                return NULL;
+            }
+            return new_Tree_one_child("<X>", new_Tree(&alphabet[i]));
+        }
+    }
+    
+    //if we couldn't match any of the letters in the alphabet
+    return NULL;
+}
+
+/**
  * Part 1: Recursive-Descent Parser starter function
  */
 void recursive_desc_parser(char *input) {

@@ -24,6 +24,8 @@ extern Tree new_Tree(char *label);   //new instance of tree
 
 extern Tree new_Tree_epsilon_child(char* label);  //instance of tree with child epsilon
 
+extern Tree new_Tree_one_child(char* label, Tree child1);  //one child
+
 extern Tree new_Tree_two_children(char* label, Tree child1, Tree child2); //two children
 
 extern Tree new_Tree_three_children(char* label, Tree child1, Tree child2, Tree child3); //three children

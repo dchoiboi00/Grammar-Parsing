@@ -22,6 +22,12 @@ Tree new_Tree_epsilon_child(char* label) {
     return tree;
 }
 
+Tree new_Tree_one_child(char* label, Tree child1){
+    Tree tree = new_Tree(label);
+    Tree_add_child(tree, child1);
+    return tree;
+}
+
 Tree new_Tree_two_children(char* label, Tree child1, Tree child2){
     Tree tree = new_Tree(label);
     Tree_add_child(tree, child1);
