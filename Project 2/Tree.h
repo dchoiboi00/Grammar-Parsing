@@ -18,6 +18,7 @@ typedef struct TreeNode* Tree;
 struct TreeNode {
     char *label;   //stores the label as a string
     LinkedList children;
+    bool visited; //need this for table-driven parsing, to find leftmost syntactic category
 };
 
 extern Tree new_Tree(char *label);   //new instance of tree

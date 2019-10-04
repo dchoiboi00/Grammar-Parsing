@@ -180,21 +180,17 @@ Tree parseA() {
  * Production: <X> -> a | b | ... | z
  */
 Tree parseX() {
-    char alphabet[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '\0'};
+    char* alphabet[26] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};  //array of char*'s, not chars
     
     for (int i = 0; i < 26; i++){  //for each letter in the lowercase alphabet
-        if (lookahead(alphabet[i])){
-            if (!matchTerminal(alphabet[i])){  //if we find it in lookahead, match and consume it
+        if (lookahead(alphabet[i][0])){  //we need [0] to get the char
+            if (!matchTerminal(alphabet[i][0])){  //if we find it in lookahead, match and consume it
                 return NULL;
             }
-            char str[2];
-            str[0] = alphabet[i];
-            str[1] = '\0';
-            printf("Our <X> has child: %s\n", str);
-            return new_Tree_one_child("<X>", new_Tree(str));
+            return new_Tree_one_child("<X>", new_Tree(alphabet[i]));
         }
     }
-    
+
     //if we couldn't match any of the letters in the alphabet
     return NULL;
 }
@@ -204,7 +200,7 @@ Tree parseX() {
  */
 void recursive_desc_parser(char *input) {
     printf("Inputed expression: %s\n", input);
-    nextInputChar = input;   //initialize the input tracker
+    nextInputChar = input;   //reset the input tracker
     
     Tree tree = parseE();
     
@@ -213,5 +209,6 @@ void recursive_desc_parser(char *input) {
         printf("ERROR: Invalid expression\n");
     } else {  //otherwise, print our tree
         print_Tree(tree);
+        free_Tree(tree);
     }
 }
