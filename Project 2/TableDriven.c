@@ -84,17 +84,21 @@ Tree find_leftmost_leaf(Tree tree){
         LinkedListIterator children_iter = LinkedList_iterator(tree->children);
         while (LinkedListIterator_hasNext(children_iter)){   //go through each child recursively
             Tree child = LinkedListIterator_next(children_iter);
-            return find_leftmost_leaf(child);
+            if (find_leftmost_leaf(child) != NULL){
+                free(children_iter);
+                return find_leftmost_leaf(child);
+            }
         }
+        free(children_iter);
     }
     
-    return tree;
+    return NULL;
 }
 
 Tree table_driven_parser(char* input, int** table, Production* grammar, int grammar_size){
     nextInputChar_table = input;  //reset the input tracker
     LinkedList stack = new_LinkedList();  //our stack: we will use _add_at_end() and _pop()
-    int production = 0;
+    int	production = 0;
     LinkedList_add_at_end(stack, grammar[production]->head);  //start with start symbol on stack
     Tree tree = new_Tree(grammar[production]->head);   //Start the tree, top-down approach
     
@@ -113,7 +117,7 @@ Tree table_driven_parser(char* input, int** table, Production* grammar, int gram
             //use the table to get production
             int next_prod_dest = table[production][(int)nextInputChar_table[0]];  //e.g. 102, 401, 708
             if (next_prod_dest == -1){
-                printf("ERROR (destination is -1): Invalid expression\n");
+//                printf("ERROR (destination is -1): Invalid expression\n");
                 return NULL;
             }
             
@@ -124,6 +128,7 @@ Tree table_driven_parser(char* input, int** table, Production* grammar, int gram
             LinkedListIterator body_iter = LinkedList_iterator(our_body);
             LinkedList temp = new_LinkedList();  //temporary list in order to insert into stack in reverse
             Tree leftmost = find_leftmost_leaf(tree);
+//            printf("%s   ", leftmost->label);
             while (LinkedListIterator_hasNext(body_iter)) {
                 char* s = LinkedListIterator_next(body_iter);
                 if (strlen(s) == 0){  //if it is epsilon
@@ -145,14 +150,14 @@ Tree table_driven_parser(char* input, int** table, Production* grammar, int gram
             
         } else {   //If we popped a terminal from the stack
             if (!matchTerminal_table(token[0]) && strlen(token) > 0) {  //try to match and consume the terminal, don't do anything on epsilon
-                printf("ERROR (terminal doesn't match): Invalid expression\n");
+//                printf("ERROR (terminal doesn't match): Invalid expression\n");
                 return NULL;
             }
         }
     }
     
     if (nextInputChar_table[0] != '\0') {  //if we ended before the end of the string, print ERROR
-        printf("ERROR (ended early): Invalid expression\n");
+//        printf("ERROR (ended early): Invalid expression\n");
         return NULL;
     }
     

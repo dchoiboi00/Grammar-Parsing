@@ -12,9 +12,9 @@
 #include <stdio.h>
 #include "Tree.h"
 
-typedef struct Production* Production;
+typedef struct ProductionNode* Production;
 
-struct Production {
+struct ProductionNode {
     char* head;   //stores the string of left hand side syntactic category: e.g. <E>
     LinkedList list_of_bodies;    //stores a list of LinkedLists, since one head can have several bodies: e.g. <X> -> a | b | ... | z
 };

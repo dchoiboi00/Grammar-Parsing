@@ -9,7 +9,7 @@
 #include "Production.h"
 
 Production new_Production(char* head){
-    Production this = (Production)malloc(sizeof(Production));
+    Production this = (Production)malloc(sizeof(struct ProductionNode));
     
     this->head = head;
     this->list_of_bodies = new_LinkedList();

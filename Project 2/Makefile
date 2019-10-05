@@ -10,7 +10,7 @@ CFLAGS = -g -std=c99 -Wall -Werror
 
 programs: $(PROGRAMS)
 
-rexp: Tree.o RecursiveDescent.o main.o LinkedList.o
+rexp: Tree.o RecursiveDescent.o Production.o TableDriven.o main.o LinkedList.o 
 	$(CC) -o $@ $^
 
 LinkedList:
@@ -18,7 +18,6 @@ LinkedList:
 
 clean:
 	-rm $(PROGRAMS) *.o
-	-rm -r *.dSYM
 
 run:
 	./rexp

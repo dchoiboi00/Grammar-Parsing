@@ -13,7 +13,6 @@ Tree new_Tree(char* label) {
     
     tree->label = label;
     tree->children = new_LinkedList();
-    tree->visited = false;
     return tree;
 }
 
