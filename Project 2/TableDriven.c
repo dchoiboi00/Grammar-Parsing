@@ -147,7 +147,7 @@ Tree table_driven_parser(char* input, int** table, Production* grammar, int gram
                 char* s = LinkedList_pop(temp);
                 LinkedList_add_at_front(stack, s);
             }
-            
+            LinkedList_free(temp, false);
         } else {   //If we popped a terminal from the stack
             if (!matchTerminal_table(token[0]) && strlen(token) > 0) {  //try to match and consume the terminal, don't do anything on epsilon
 //                printf("ERROR (terminal doesn't match): Invalid expression\n");
@@ -155,6 +155,7 @@ Tree table_driven_parser(char* input, int** table, Production* grammar, int gram
             }
         }
     }
+    LinkedList_free(stack, false);
     
     if (nextInputChar_table[0] != '\0') {  //if we ended before the end of the string, print ERROR
 //        printf("ERROR (ended early): Invalid expression\n");

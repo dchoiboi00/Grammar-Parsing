@@ -17,7 +17,16 @@ Production new_Production(char* head){
 }
 
 void Production_free(Production production){
+    LinkedListIterator bodies_iter = LinkedList_iterator(production->list_of_bodies);
+    while (LinkedListIterator_hasNext(bodies_iter)){  //iterates over the different bodies
+        LinkedList body = LinkedListIterator_next(bodies_iter);  //free the bodies
+        LinkedList_free(body, false);
+    }
+    free(bodies_iter);
     
+    LinkedList_free(production->list_of_bodies, false);    //free the list_of_bodies
+    
+    free(production);
 }
 
 void Production_add_to_body(Production production, char* name, int body_num){

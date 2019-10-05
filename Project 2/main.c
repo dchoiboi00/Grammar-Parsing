@@ -106,4 +106,15 @@ int main(int argc, const char * argv[]) {
             free_Tree(tree);
         }
     }
+    
+    //free table and grammar
+    for (int i = 0; i < grammar_size; i++){
+        free(table[i]);
+    }
+    free(table);
+    
+    for (int i = 0; i < grammar_size; i++){
+        Production_free(grammar[i]);
+    }
+    free(grammar);
 }
