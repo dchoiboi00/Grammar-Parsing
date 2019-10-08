@@ -224,8 +224,6 @@ void* LinkedListIterator_next(LinkedListIterator this) {
 	}
 }
 
-#ifdef MAIN
-
 /**
  * Print the given LinkedList to stdout, assuming that the values are
  * all null-terminated strings.
@@ -241,6 +239,8 @@ void LinkedList_print_string_list(LinkedList this) {
 	}
 	printf("]\n");
 }
+
+#ifdef MAIN
 
 int main(int argc, char **argv) {
 	LinkedList list = new_LinkedList();

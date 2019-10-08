@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D25E7C80234C1896006F4E3F /* ExpressionTree.c in Sources */ = {isa = PBXBuildFile; fileRef = D25E7C7F234C1896006F4E3F /* ExpressionTree.c */; };
 		D2D9308C23457D12006C0C42 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D2D9308B23457D12006C0C42 /* main.c */; };
 		D2D9309423457F30006C0C42 /* LinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = D2D9309223457F30006C0C42 /* LinkedList.c */; };
 		D2D930972345802C006C0C42 /* Tree.c in Sources */ = {isa = PBXBuildFile; fileRef = D2D930962345802C006C0C42 /* Tree.c */; };
@@ -29,6 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D25E7C7E234C1896006F4E3F /* ExpressionTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpressionTree.h; sourceTree = "<group>"; };
+		D25E7C7F234C1896006F4E3F /* ExpressionTree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ExpressionTree.c; sourceTree = "<group>"; };
 		D2D9308823457D12006C0C42 /* Project 2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Project 2"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2D9308B23457D12006C0C42 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		D2D9309223457F30006C0C42 /* LinkedList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LinkedList.c; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 				D2D930A02346F9D8006C0C42 /* Production.h */,
 				D2D930A12346F9D8006C0C42 /* Production.c */,
 				D2D9308B23457D12006C0C42 /* main.c */,
+				D25E7C7E234C1896006F4E3F /* ExpressionTree.h */,
+				D25E7C7F234C1896006F4E3F /* ExpressionTree.c */,
 				D2D9309B23464B9E006C0C42 /* Makefile */,
 				D2D93099234598AD006C0C42 /* RecursiveDescent.c */,
 				D2D93098234598AD006C0C42 /* RecursiveDescent.h */,
@@ -147,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2D9309C23464B9E006C0C42 /* Makefile in Sources */,
+				D25E7C80234C1896006F4E3F /* ExpressionTree.c in Sources */,
 				D2D9309423457F30006C0C42 /* LinkedList.c in Sources */,
 				D2D9309A234598AD006C0C42 /* RecursiveDescent.c in Sources */,
 				D2D930972345802C006C0C42 /* Tree.c in Sources */,

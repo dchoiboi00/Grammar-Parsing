@@ -43,6 +43,17 @@ Tree new_Tree_three_children(char* label, Tree child1, Tree child2, Tree child3)
     return tree;
 }
 
+bool hasOneChild(Tree tree){
+    LinkedListIterator iter = LinkedList_iterator(tree->children);
+    int counter = 0;
+    while (LinkedListIterator_hasNext(iter)){
+        LinkedListIterator_next(iter);
+        counter++;
+    }
+    free(iter);
+    return counter <= 1;
+}
+
 //Free the label, and the children
 void free_Tree(Tree tree){
     if (!LinkedList_isEmpty(tree->children)){

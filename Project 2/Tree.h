@@ -30,6 +30,8 @@ extern Tree new_Tree_two_children(char* label, Tree child1, Tree child2); //two 
 
 extern Tree new_Tree_three_children(char* label, Tree child1, Tree child2, Tree child3); //three children
 
+extern bool hasOneChild(Tree tree); //whether the tree has 1 or less children
+
 extern void free_Tree(Tree tree);  //free tree
 
 extern void Tree_add_child(Tree tree, Tree child);  //add child to tree's children
