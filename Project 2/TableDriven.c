@@ -118,6 +118,7 @@ Tree table_driven_parser(char* input, int** table, Production* grammar, int gram
             int next_prod_dest = table[production][(int)nextInputChar_table[0]];  //e.g. 102, 401, 708
             if (next_prod_dest == -1){
 //                printf("ERROR (destination is -1): Invalid expression\n");
+                free_Tree(tree);
                 return NULL;
             }
             
@@ -151,6 +152,7 @@ Tree table_driven_parser(char* input, int** table, Production* grammar, int gram
         } else {   //If we popped a terminal from the stack
             if (!matchTerminal_table(token[0]) && strlen(token) > 0) {  //try to match and consume the terminal, don't do anything on epsilon
 //                printf("ERROR (terminal doesn't match): Invalid expression\n");
+                free_Tree(tree);
                 return NULL;
             }
         }
@@ -159,6 +161,8 @@ Tree table_driven_parser(char* input, int** table, Production* grammar, int gram
     
     if (nextInputChar_table[0] != '\0') {  //if we ended before the end of the string, print ERROR
 //        printf("ERROR (ended early): Invalid expression\n");
+        free_Tree(tree);
+        //LinkedList_free(stack, false);
         return NULL;
     }
     

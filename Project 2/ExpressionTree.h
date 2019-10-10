@@ -23,6 +23,11 @@ extern void createStack(Tree tree, LinkedList stack);
 extern Tree createExpressionTree(LinkedList stack);
 
 /*
+ * Adds a set of parentheses to the expression tree
+ */
+extern void addParentheses(LinkedList tempStack, LinkedList stack);
+
+/*
  * Prints an expression tree in prefix notation. Uses preorder traversal
  */
 extern void printPrefixExpTree(Tree tree);

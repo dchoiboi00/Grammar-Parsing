@@ -10,7 +10,7 @@ CFLAGS = -g -std=c99 -Wall -Werror
 
 programs: $(PROGRAMS)
 
-rexp: Tree.o RecursiveDescent.o Production.o TableDriven.o main.o LinkedList.o 
+rexp: Tree.o RecursiveDescent.o Production.o TableDriven.o ExpressionTree.o main.o LinkedList.o
 	$(CC) -o $@ $^
 
 LinkedList:

@@ -205,7 +205,10 @@ void recursive_desc_parser(char *input) {
     Tree tree = parseE();
     
     //if the tree is either NULL or if E() ended before the end of the string, print ERROR
-    if (tree == NULL || !lookahead('\0')){
+    if (!lookahead('\0')){
+        free_Tree(tree);
+        printf("ERROR: Invalid expression\n");
+    } else if (tree == NULL){
         printf("ERROR: Invalid expression\n");
     } else {  //otherwise, print our tree
         print_Tree(tree);

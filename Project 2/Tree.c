@@ -43,7 +43,7 @@ Tree new_Tree_three_children(char* label, Tree child1, Tree child2, Tree child3)
     return tree;
 }
 
-bool hasOneChild(Tree tree){
+bool isFull(Tree tree){
     LinkedListIterator iter = LinkedList_iterator(tree->children);
     int counter = 0;
     while (LinkedListIterator_hasNext(iter)){
@@ -51,7 +51,13 @@ bool hasOneChild(Tree tree){
         counter++;
     }
     free(iter);
-    return counter <= 1;
+    
+//    printf("Number of leaves: %d\n", counter);
+    if (strcmp(tree->label, "*")==0){
+        return counter >= 1;
+    } else {
+        return counter >= 2;
+    }
 }
 
 //Free the label, and the children

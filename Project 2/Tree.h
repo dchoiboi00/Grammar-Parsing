@@ -30,7 +30,7 @@ extern Tree new_Tree_two_children(char* label, Tree child1, Tree child2); //two 
 
 extern Tree new_Tree_three_children(char* label, Tree child1, Tree child2, Tree child3); //three children
 
-extern bool hasOneChild(Tree tree); //whether the tree has 1 or less children
+extern bool isFull(Tree tree); //whether the tree has 2 or more children (or one child if label is '*'
 
 extern void free_Tree(Tree tree);  //free tree
 

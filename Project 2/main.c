@@ -131,14 +131,16 @@ int main(int argc, const char * argv[]) {
         } else {  //otherwise, print our tree
             print_Tree(tree);
             
-            LinkedList stack = new_LinkedList();   //did not free
+            LinkedList stack = new_LinkedList();
             createStack(tree, stack);
-            LinkedList_print_string_list(stack);
+//            LinkedList_print_string_list(stack);
             
             Tree expressionTree = createExpressionTree(stack);
+//            print_Tree(expressionTree);
             printPrefixExpTree(expressionTree);
             
-            
+            printf("\n");
+            LinkedList_free(stack, false);
             free_Tree(expressionTree);
             free_Tree(tree);
         }
