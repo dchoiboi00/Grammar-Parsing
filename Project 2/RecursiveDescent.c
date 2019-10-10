@@ -198,8 +198,7 @@ Tree parseX() {
 /**
  * Part 1: Recursive-Descent Parser starter function
  */
-void recursive_desc_parser(char *input) {
-    printf("Inputed expression: %s\n", input);
+bool recursive_desc_parser(char *input) {
     nextInputChar = input;   //reset the input tracker
     
     Tree tree = parseE();
@@ -208,10 +207,14 @@ void recursive_desc_parser(char *input) {
     if (!lookahead('\0')){
         free_Tree(tree);
         printf("ERROR: Invalid expression\n");
+        return false;
     } else if (tree == NULL){
         printf("ERROR: Invalid expression\n");
+        return false;
     } else {  //otherwise, print our tree
+        printf("\nPart 1: Recursive-descent parser\nInputed expression: %s\n", input);
         print_Tree(tree);
         free_Tree(tree);
+        return true;
     }
 }

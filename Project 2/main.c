@@ -18,23 +18,7 @@ int main(int argc, const char * argv[]) {
     char input[15];
     printf("CSC173 Project 2 by Yoo Choi\n");
     
-    /*
-     * Part 1: Recursive-Descent Parser
-     */
-    while (true){
-        printf("\nEnter a regular expression (max 15 characters) to run a recursive-descent parser (\"quit\" to quit): ");
-        scanf("%15s", input);   //take input
-        
-        if (strcmp(input, "quit") == 0){
-            printf("Quit Part 1: Recursive-descent Parsing\n\n");
-            break;
-        }
-        
-        recursive_desc_parser(input);
-    }
-    /*
-     * Part 2: Table-Driven Parser
-     */
+    //Create productions
     Production E = new_Production("<E>");
     Production_add_to_body(E, "<C>", 1);
     Production_add_to_body(E, "<ET>", 1);
@@ -91,60 +75,102 @@ int main(int argc, const char * argv[]) {
     
     int** table = create_parsing_table(grammar, grammar_size);
     
+    
+    //Read input and print results. Ends on end-of-file in standard input
     while (true){
-        printf("\nEnter a regular expression (max 15 characters) to run a table-driven parser (\"quit\" to quit): ");
-        scanf("%15s", input);   //take input
+        printf("\nEnter a regular expression, max 20 characters. Press \"Ctrl + D\" to quit: ");
+        scanf("%20s", input);   //take input
         
-        if (strcmp(input, "quit") == 0){
-            printf("Quit Part 2: Table-driven Parsing\n\n");
+        if (feof(stdin)){
+            printf("\n\nQuit program\n\n");
             break;
         }
         
-        Tree tree = table_driven_parser(input, table, grammar, grammar_size);
-        printf("Inputed expression: %s\n", input);
+        /*
+         * Part 1: Recursive-Descent Parser
+         */
+        bool valid = recursive_desc_parser(input);
         
-        //if the tree is either NULL or if E() ended before the end of the string, print ERROR
-        if (tree == NULL){
-            printf("ERROR: Invalid expression\n");
-        } else {  //otherwise, print our tree
-            print_Tree(tree);
-            free_Tree(tree);
+        /*
+         * Part 2: Table-Driven Parser   AND
+         * Part 3: Build an expression tree, and print in prefix notation
+         */
+        if (valid) {
+            Tree tree = table_driven_parser(input, table, grammar, grammar_size);
+            printf("\nPart 2: Table-driven parser\nInputed expression: %s\n", input);
+            
+            //if the tree is either NULL or if E() ended before the end of the string, print ERROR
+            if (tree == NULL){
+                printf("ERROR: Invalid expression\n");
+            } else {  //otherwise, print our tree
+                print_Tree(tree);
+                
+                LinkedList stack = new_LinkedList();
+                createStack(tree, stack);
+                //            LinkedList_print_string_list(stack);
+                
+                Tree expressionTree = createExpressionTree(stack);
+                //            print_Tree(expressionTree);
+                
+                printf("\nPart 3: Prefix notation of expression tree\n");
+                printPrefixExpTree(expressionTree);
+                
+                printf("\n");
+                LinkedList_free(stack, false);
+                free_Tree(expressionTree);
+                free_Tree(tree);
+            }
         }
     }
+        
+//        Tree tree = table_driven_parser(input, table, grammar, grammar_size);
+//        printf("Inputed expression: %s\n", input);
+        
+        //if the tree is either NULL or if E() ended before the end of the string, print ERROR
+//        if (tree == NULL){
+//            printf("ERROR: Invalid expression\n");
+//        } else {  //otherwise, print our tree
+//            print_Tree(tree);
+//
+//            LinkedList stack = new_LinkedList();
+//            createStack(tree, stack);
+//            //            LinkedList_print_string_list(stack);
+//
+//            Tree expressionTree = createExpressionTree(stack);
+//            //            print_Tree(expressionTree);
+//            printPrefixExpTree(expressionTree);
+//
+//            printf("\n");
+//            LinkedList_free(stack, false);
+//            free_Tree(expressionTree);
+//            free_Tree(tree);
+//        }
+//    }
+    
+//    while (true){
+//        printf("\nEnter a regular expression (max 15 characters) to run a table-driven parser (\"quit\" to quit): ");
+//        scanf("%15s", input);   //take input
+//
+//        if (strcmp(input, "quit") == 0){
+//            printf("Quit Part 2: Table-driven Parsing\n\n");
+//            break;
+//        }
+//
+//
+//    }
+    
     
     //Part 3: Build an expression tree, and print in prefix notation
-    while (true){
-        printf("\nEnter a regular expression (max 15 characters) to print its parse tree AND its expression tree in prefix notation (\"quit\" to quit): ");
-        scanf("%15s", input);   //take input
-        
-        if (strcmp(input, "quit") == 0){
-            printf("Quit Part 3: Expression Trees in Prefix Notation \n\n");
-            break;
-        }
-        
-        Tree tree = table_driven_parser(input, table, grammar, grammar_size);
-        printf("Inputed expression: %s\n", input);
-        
-        //if the tree is either NULL or if E() ended before the end of the string, print ERROR
-        if (tree == NULL){
-            printf("ERROR: Invalid expression\n");
-        } else {  //otherwise, print our tree
-            print_Tree(tree);
-            
-            LinkedList stack = new_LinkedList();
-            createStack(tree, stack);
-//            LinkedList_print_string_list(stack);
-            
-            Tree expressionTree = createExpressionTree(stack);
-//            print_Tree(expressionTree);
-            printPrefixExpTree(expressionTree);
-            
-            printf("\n");
-            LinkedList_free(stack, false);
-            free_Tree(expressionTree);
-            free_Tree(tree);
-        }
-    }
+//    while (true){
+//        printf("\nEnter a regular expression (max 15 characters) to print its parse tree AND its expression tree in prefix notation (\"quit\" to quit): ");
+//        scanf("%15s", input);   //take input
+//
+//        if (strcmp(input, "quit") == 0){
+//            printf("Quit Part 3: Expression Trees in Prefix Notation \n\n");
+//            break;
+//        }
+//
+//    }
     
     
     //free table and grammar
