@@ -22,7 +22,6 @@ int main(int argc, const char * argv[]) {
     Production E = new_Production("<E>");
     Production_add_to_body(E, "<C>", 1);
     Production_add_to_body(E, "<ET>", 1);
-//    print_Production(E);
     
     Production ET = new_Production("<ET>");
     Production_add_to_body(ET, "|", 1);
@@ -46,7 +45,6 @@ int main(int argc, const char * argv[]) {
     Production_add_to_body(ST, "*", 1);
     Production_add_to_body(ST, "<ST>", 1);
     Production_add_to_body(ST, "", 2);
-//    print_Production(ST);
     
     Production A = new_Production("<A>");
     Production_add_to_body(A, "(", 1);
@@ -59,7 +57,6 @@ int main(int argc, const char * argv[]) {
     for (int i = 1; i < 27; i++){
         Production_add_to_body(X, alphabet[i-1], i);
     }
-//    print_Production(X);
     
     //Create our grammar
     Production* grammar = (Production*)malloc(sizeof(Production) * 8);
@@ -107,10 +104,10 @@ int main(int argc, const char * argv[]) {
                 
                 LinkedList stack = new_LinkedList();
                 createStack(tree, stack);
-                //            LinkedList_print_string_list(stack);
+                //LinkedList_print_string_list(stack);
                 
                 Tree expressionTree = createExpressionTree(stack);
-                //            print_Tree(expressionTree);
+                //print_Tree(expressionTree);
                 
                 printf("\nPart 3: Prefix notation of expression tree\n");
                 printPrefixExpTree(expressionTree);
@@ -122,57 +119,7 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
-        
-//        Tree tree = table_driven_parser(input, table, grammar, grammar_size);
-//        printf("Inputed expression: %s\n", input);
-        
-        //if the tree is either NULL or if E() ended before the end of the string, print ERROR
-//        if (tree == NULL){
-//            printf("ERROR: Invalid expression\n");
-//        } else {  //otherwise, print our tree
-//            print_Tree(tree);
-//
-//            LinkedList stack = new_LinkedList();
-//            createStack(tree, stack);
-//            //            LinkedList_print_string_list(stack);
-//
-//            Tree expressionTree = createExpressionTree(stack);
-//            //            print_Tree(expressionTree);
-//            printPrefixExpTree(expressionTree);
-//
-//            printf("\n");
-//            LinkedList_free(stack, false);
-//            free_Tree(expressionTree);
-//            free_Tree(tree);
-//        }
-//    }
-    
-//    while (true){
-//        printf("\nEnter a regular expression (max 15 characters) to run a table-driven parser (\"quit\" to quit): ");
-//        scanf("%15s", input);   //take input
-//
-//        if (strcmp(input, "quit") == 0){
-//            printf("Quit Part 2: Table-driven Parsing\n\n");
-//            break;
-//        }
-//
-//
-//    }
-    
-    
-    //Part 3: Build an expression tree, and print in prefix notation
-//    while (true){
-//        printf("\nEnter a regular expression (max 15 characters) to print its parse tree AND its expression tree in prefix notation (\"quit\" to quit): ");
-//        scanf("%15s", input);   //take input
-//
-//        if (strcmp(input, "quit") == 0){
-//            printf("Quit Part 3: Expression Trees in Prefix Notation \n\n");
-//            break;
-//        }
-//
-//    }
-    
-    
+
     //free table and grammar
     for (int i = 0; i < grammar_size; i++){
         free(table[i]);

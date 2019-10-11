@@ -52,7 +52,7 @@ bool isFull(Tree tree){
     }
     free(iter);
     
-//    printf("Number of leaves: %d\n", counter);
+    //printf("Number of leaves: %d\n", counter);
     if (strcmp(tree->label, "*")==0){
         return counter >= 1;
     } else {

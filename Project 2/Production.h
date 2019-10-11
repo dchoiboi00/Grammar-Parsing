@@ -27,6 +27,4 @@ extern void Production_add_to_body(Production production, char* name, int body_n
 
 extern bool is_Production(char* string);  //returns whether string is enclosed with '<   >', indicating it is a production
 
-extern void print_Production(Production production);
-
 #endif /* Production_h */

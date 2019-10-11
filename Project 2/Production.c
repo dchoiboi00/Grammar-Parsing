@@ -51,29 +51,3 @@ void Production_add_to_body(Production production, char* name, int body_num){
 bool is_Production(char* string){
     return string[0] == '<' && string[strlen(string) - 1] == '>';  //checks for < and > at the beginning and end
 }
-
-void print_Production(Production production)    //Prints a syntactic category's productions
-{
-    LinkedListIterator iterator = LinkedList_iterator(production->list_of_bodies); //Iterates over production body
-    while (LinkedListIterator_hasNext(iterator))
-    {
-        printf("%s ->", production->head);   //Prints syntactic category name
-        
-        LinkedListIterator body_iterator = LinkedList_iterator(LinkedListIterator_next(iterator));  //Iterates over sub-production
-        while (LinkedListIterator_hasNext(body_iterator))
-        {
-            char* s = LinkedListIterator_next(body_iterator);
-            
-            if (strlen(s) == 0) //Prints epsilon if it is empty
-            {
-                s = "ε";
-            }
-            
-            printf(" %s", s);   //Prints body otherwise
-        }
-        
-        printf("\n");   //Prints a new line with each subproduction
-        free(body_iterator);
-    }
-    free(iterator);
-}
