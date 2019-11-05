@@ -19,7 +19,8 @@ My project does not have any memory leaks--all heap blocks were freed at exit.
 
 **************************************
 LinkedList.ch: LinkedList implementation (not mine)
-Tree.ch: Tree implementation for the parse tree and the expression tree
+
+Tree.ch: Tree implementation for the parse tree and the expression tree  
 RecursiveDescent.ch: Functions for Part 1
 TableDriven.ch: Functions for Part 2
 Production.ch: Production implementation to store our grammar
