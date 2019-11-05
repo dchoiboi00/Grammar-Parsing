@@ -18,7 +18,7 @@ You can use valgrind:
 My project does not have any memory leaks--all heap blocks were freed at exit.
 
 **************************************
-LinkedList.ch: LinkedList implementation (not mine)  
+LinkedList.ch: LinkedList implementation (Prof. Ferguson)  
 Tree.ch: Tree implementation for the parse tree and the expression tree  
 RecursiveDescent.ch: Functions for Part 1  
 TableDriven.ch: Functions for Part 2  
